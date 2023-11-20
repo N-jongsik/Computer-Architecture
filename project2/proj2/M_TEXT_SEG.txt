@@ -1,0 +1,88 @@
+00111100_00000010_00010010_00110100// lui $2 0x1234--12340000 
+00110100_01000011_01010110_01111000// ori $3 $2 0x5678--12345678
+00111100_00000100_00010001_00100010// lui $4 0x1122--11220000
+00110100_10000101_00110011_01000100// ori $5 $4 0x3344--11223344
+
+000000_00101_00011_00010_00000_100001 //addu $5 $3 $2
+000000_00101_00011_00010_00000_100101//or $2, $5, $3
+000011_00000000000000000000001000//jal $31 = pc; pc = pc4 | i26 << 2
+001001_00011_00010_0001000000100101//addiu $2, $3, 0001000000100101
+001110_00011_00010_0001000000100101//xori $2, $3, 0001000000100101
+000000_00101_00011_00010_00100_000000//sll $2, $3, 00100
+000000_00101_00011_00010_00000_000111//srav $2, $3, $5
+101001_00010_00101_0000000000000010//sh $5, 0000000000000010 MEM [$s + i]:2 = LH ($t)
+100001_00010_00111_0000000000000010//lh $5, 0000000000000010 $t = SE (MEM [$s + i]:2)
+
+00111100_00000100_11111111_11111111// lui $4 0xFFFF0000
+00110100_10000101_11111111_11111111// ori $5 $4 0xFFFFFFFF //레지스터에 저장된 값을 음수로 설정함으로써 bltz의 결과 값을 확인할 때 사용
+
+000001_00101_00000_0000000000000010//bltz if ($s < 0) pc += i << 2
+
+00000000_00000000_00000000_00001101//break
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+xxxxxxxx_xxxxxxxx_xxxxxxxx_xxxxxxxx
+
