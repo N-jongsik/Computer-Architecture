@@ -1,0 +1,6 @@
+./sim-cache bin/cc1.little.ss -O inputs/1stmt.i -o results/cc1.out 2> traces/cc1.trace
+
+./sim-cache bin/ijpeg.little.ss -image_file inputs/vigo.ppm -verbose 1 2> traces/ijpeg.trace > results/ijpeg.out
+
+./sim-cache bin/perl.little.ss inputs/scrabbl.pl inputs/scrabbl.in 2> traces/perl.trace > results/perl.out
+

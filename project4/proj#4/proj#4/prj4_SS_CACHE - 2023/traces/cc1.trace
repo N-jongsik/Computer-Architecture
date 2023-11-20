@@ -1,0 +1,161 @@
+sim-cache: SimpleScalar/PISA Tool Set version 3.0 of August, 2003.
+Copyright (c) 1994-2003 by Todd M. Austin, Ph.D. and SimpleScalar, LLC.
+All Rights Reserved. This version of SimpleScalar is licensed for academic
+non-commercial use.  No portion of this work may be used by any commercial
+entity, or for any commercial purpose, without the prior written permission
+of SimpleScalar, LLC (info@simplescalar.com).
+
+sim: command line: ./sim-cache bin/cc1.little.ss -O inputs/amptjp.i -o results/cc1.out 
+
+sim: simulation started @ Sun May 23 22:50:23 2021, options follow:
+
+sim-cache: This simulator implements a functional cache simulator.  Cache
+statistics are generated for a user-selected cache and TLB configuration,
+which may include up to two levels of instruction and data cache (with any
+levels unified), and one level of instruction and data TLBs.  No timing
+information is generated.
+
+# -config                     # load configuration from a file
+# -dumpconfig                 # dump configuration to a file
+# -h                    false # print help message    
+# -v                    false # verbose operation     
+# -d                    false # enable debug message  
+# -i                    false # start in Dlite debugger
+-seed                       1 # random number generator seed (0 for timer seed)
+# -q                    false # initialize and terminate immediately
+# -chkpt               <null> # restore EIO trace execution from <fname>
+# -redir:sim           <null> # redirect simulator output to file (non-interactive only)
+# -redir:prog          <null> # redirect simulated program output to file
+-nice                       0 # simulator scheduling priority
+-max:inst                   0 # maximum number of inst's to execute
+-cache:dl1       dl1:256:32:1:l # l1 data cache config, i.e., {<config>|none}
+-cache:dl2       ul2:1024:64:4:l # l2 data cache config, i.e., {<config>|none}
+-cache:il1       il1:256:32:1:l # l1 inst cache config, i.e., {<config>|dl1|dl2|none}
+-cache:il2                dl2 # l2 instruction cache config, i.e., {<config>|dl2|none}
+-tlb:itlb        itlb:16:4096:4:l # instruction TLB config, i.e., {<config>|none}
+-tlb:dtlb        dtlb:32:4096:4:l # data TLB config, i.e., {<config>|none}
+-flush                  false # flush caches on system calls
+-cache:icompress        false # convert 64-bit inst addresses to 32-bit inst equivalents
+# -pcstat              <null> # profile stat(s) against text addr's (mult uses ok)
+
+  The cache config parameter <config> has the following format:
+
+    <name>:<nsets>:<bsize>:<assoc>:<repl>
+
+    <name>   - name of the cache being defined
+    <nsets>  - number of sets in the cache
+    <bsize>  - block size of the cache
+    <assoc>  - associativity of the cache
+    <repl>   - block replacement strategy, 'l'-LRU, 'f'-FIFO, 'r'-random
+
+    Examples:   -cache:dl1 dl1:4096:32:1:l
+                -dtlb dtlb:128:4096:32:r
+
+  Cache levels can be unified by pointing a level of the instruction cache
+  hierarchy at the data cache hiearchy using the "dl1" and "dl2" cache
+  configuration arguments.  Most sensible combinations are supported, e.g.,
+
+    A unified l2 cache (il2 is pointed at dl2):
+      -cache:il1 il1:128:64:1:l -cache:il2 dl2
+      -cache:dl1 dl1:256:32:1:l -cache:dl2 ul2:1024:64:2:l
+
+    Or, a fully unified cache hierarchy (il1 pointed at dl1):
+      -cache:il1 dl1
+      -cache:dl1 ul1:256:32:1:l -cache:dl2 ul2:1024:64:2:l
+
+
+
+sim: ** starting functional simulation w/ caches **
+warning: syscall: sigvec ignored
+warning: syscall: sigvec ignored
+ c_decode_option print_lang_decl print_lang_type print_lang_identifier make_binding_level global_bindings_p keep_next_level kept_level_p declare_parm_level in_parm_level_p pushlevel poplevel delete_block insert_block set_block push_label_level pop_label_level pushtag duplicate_decls pushdecl pushdecl_top_level implicitly_declare redeclaration_error_message lookup_label shadow_label define_label getdecls gettags storedecls storetags lookup_tag pending_xref_error lookup_tag_reverse lookup_name lookup_name_current_level init_decl_processing builtin_function shadow_tag shadow_tag_warned groktypename groktypename_in_parm_context start_decl finish_decl maybe_build_cleanup push_parm_decl clear_parm_order complete_array_type grokdeclarator c_build_type_variant grokparms get_parm_info parmlist_tags_warning xref_tag start_struct grokfield field_decl_cmp finish_struct layout_array_type start_enum finish_enum build_enumerator start_function c_mark_varargs store_parm_decls combine_parm_decls finish_function push_c_function_context pop_c_function_context zz1xmalloc zxrealloc xfree savestring savestring2 fancy_abort dupstr dupnstr substr save_pointers restore_pointers is_id_char usage in_system_include_dir is_syscalls_file needs_to_be_converted directory_specified_p file_excluded_p string_list_cons visit_each_hash_node add_symbol lookup free_def_dec unexpand_if_needed abspath shortpath find_file aux_info_corrupted check_aux_info find_corresponding_lparen referenced_file_is_newer save_def_or_dec munge_compile_params gen_aux_info_file process_aux_info_file rename_c_file reverse_def_dec_list find_extern_def find_static_definition connect_defs_and_decs identify_lineno declare_source_confusing check_source seek_to_line forward_to_next_token_char output_bytes output_string output_up_to other_variable_style_function edit_fn_declaration edit_formals_lists find_rightmost_formals_list add_local_decl add_global_decls edit_fn_definition do_cleaning careful_find_l_paren scan_for_missed_items edit_file do_processing main
+time in parse: 0.000000
+time in integration: 0.000000
+time in jump: 0.000000
+time in cse: 0.000000
+time in loop: 0.000000
+time in cse2: 0.000000
+time in flow: 0.000000
+time in combine: 0.000000
+time in sched: 0.000000
+time in local-alloc: 0.000000
+time in global-alloc: 0.000000
+time in sched2: 0.000000
+time in dbranch: 0.000000
+time in shorten-branch: 0.000000
+time in stack-reg: 0.000000
+time in final: 0.000000
+time in varconst: 0.000000
+time in symout: 0.000000
+time in dump: 0.000000
+
+sim: ** simulation statistics **
+sim_num_insn              656645631 # total number of instructions executed
+sim_num_refs              257500818 # total number of loads and stores executed
+sim_elapsed_time                228 # total simulation time in seconds
+sim_inst_rate          2880024.6974 # simulation speed (in insts/sec)
+il1.accesses              656645631 # total number of accesses
+il1.hits                  593456444 # total number of hits
+il1.misses                 63189187 # total number of misses
+il1.replacements           63188931 # total number of replacements
+il1.writebacks                    0 # total number of writebacks
+il1.invalidations                 0 # total number of invalidations
+il1.miss_rate                0.0962 # miss rate (i.e., misses/ref)
+il1.repl_rate                0.0962 # replacement rate (i.e., repls/ref)
+il1.wb_rate                  0.0000 # writeback rate (i.e., wrbks/ref)
+il1.inv_rate                 0.0000 # invalidation rate (i.e., invs/ref)
+dl1.accesses              258288565 # total number of accesses
+dl1.hits                  245309265 # total number of hits
+dl1.misses                 12979300 # total number of misses
+dl1.replacements           12979044 # total number of replacements
+dl1.writebacks              3863149 # total number of writebacks
+dl1.invalidations                 0 # total number of invalidations
+dl1.miss_rate                0.0503 # miss rate (i.e., misses/ref)
+dl1.repl_rate                0.0503 # replacement rate (i.e., repls/ref)
+dl1.wb_rate                  0.0150 # writeback rate (i.e., wrbks/ref)
+dl1.inv_rate                 0.0000 # invalidation rate (i.e., invs/ref)
+ul2.accesses               80031636 # total number of accesses
+ul2.hits                   78083238 # total number of hits
+ul2.misses                  1948398 # total number of misses
+ul2.replacements            1944302 # total number of replacements
+ul2.writebacks               236986 # total number of writebacks
+ul2.invalidations                 0 # total number of invalidations
+ul2.miss_rate                0.0243 # miss rate (i.e., misses/ref)
+ul2.repl_rate                0.0243 # replacement rate (i.e., repls/ref)
+ul2.wb_rate                  0.0030 # writeback rate (i.e., wrbks/ref)
+ul2.inv_rate                 0.0000 # invalidation rate (i.e., invs/ref)
+itlb.accesses             656645631 # total number of accesses
+itlb.hits                 656204958 # total number of hits
+itlb.misses                  440673 # total number of misses
+itlb.replacements            440609 # total number of replacements
+itlb.writebacks                   0 # total number of writebacks
+itlb.invalidations                0 # total number of invalidations
+itlb.miss_rate               0.0007 # miss rate (i.e., misses/ref)
+itlb.repl_rate               0.0007 # replacement rate (i.e., repls/ref)
+itlb.wb_rate                 0.0000 # writeback rate (i.e., wrbks/ref)
+itlb.inv_rate                0.0000 # invalidation rate (i.e., invs/ref)
+dtlb.accesses             258288565 # total number of accesses
+dtlb.hits                 258270846 # total number of hits
+dtlb.misses                   17719 # total number of misses
+dtlb.replacements             17591 # total number of replacements
+dtlb.writebacks                6091 # total number of writebacks
+dtlb.invalidations                0 # total number of invalidations
+dtlb.miss_rate               0.0001 # miss rate (i.e., misses/ref)
+dtlb.repl_rate               0.0001 # replacement rate (i.e., repls/ref)
+dtlb.wb_rate                 0.0000 # writeback rate (i.e., wrbks/ref)
+dtlb.inv_rate                0.0000 # invalidation rate (i.e., invs/ref)
+ld_text_base             0x00400000 # program text (code) segment base
+ld_text_size                2166768 # program text (code) size in bytes
+ld_data_base             0x10000000 # program initialized data segment base
+ld_data_size                 264644 # program init'ed `.data' and uninit'ed `.bss' size in bytes
+ld_stack_base            0x7fffc000 # program stack segment base (highest address in stack)
+ld_stack_size                 16384 # program initial stack size
+ld_prog_entry            0x00400140 # program entry point (initial PC)
+ld_environ_base          0x7fff8000 # program environment base address address
+ld_target_big_endian              0 # target executable endian-ness, non-zero if big endian
+mem.page_count                  903 # total number of pages allocated
+mem.page_mem                  3612k # total size of memory pages allocated
+mem.ptab_misses                 933 # total first level page table misses
+mem.ptab_accesses        3156552440 # total page table accesses
+mem.ptab_miss_rate           0.0000 # first level page table miss rate
+

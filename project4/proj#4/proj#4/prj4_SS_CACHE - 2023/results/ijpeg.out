@@ -1,0 +1,19 @@
+
+image filename: "inputs/vigo.ppm"
+compression statistics:
+	uncompressed data size:   101469
+	compressed data size:   31407
+compression parameters:
+	quality	        : 100
+	optimize_coding : 1
+	smoothing_factor: 0
+	subimage    	: ul(0,0) lr(1,1)
+decompression parameters:
+	quantize_colors         : 0
+	do_fancy_upsampling     : 0
+	desired_number_of_colors: 0
+	two_pass_quantize       : 0
+	dither_mode             : 0
+L1 norm = 393476
+L2 norm = 3323436
+checksum: 107
